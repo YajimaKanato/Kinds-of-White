@@ -1,20 +1,64 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using WhitePalette;
-using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "WhitePalette", menuName = "Scriptable Objects/WhitePalette")]
-public class WhiteData : ScriptableObject
+public class WhiteManager : MonoBehaviour
 {
-    [SerializeField] List<WhiteColor> _whiteList;
-    
-    [System.Serializable]
-    public class WhiteColor
-    {
-        [SerializeField] Whites _white;
-        [SerializeField] Color _color;
+    [SerializeField] int _step = 2;
 
-        public Whites White { get { return _white; } }
-        public Color Color { get { return _color; } }
+    static WhiteManager _instance;
+
+    static Dictionary<Whites, Color32> _white;
+    /// <summary>カラーコードとその色をペアにする辞書</summary>
+    public static Dictionary<Whites, Color32> White { get { return _white; } }
+
+    Whites _whites;
+
+    const int RED_WHITE = 255;
+    const int GREEN_WHITE = 255;
+    const int BLUE_WHITE = 255;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        //シングルトン処理
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+            MakeWhite();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// 白を216色作る関数
+    /// </summary>
+    void MakeWhite()
+    {
+        _white = new Dictionary<Whites, Color32>();
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                for (int k = 0; k < 6; k++)
+                {
+                    foreach (var white in Enum.GetValues(typeof(Whites)))
+                    {
+                        if ((int)white == 36 * i + 6 * j + k)
+                        {
+                            _whites = (Whites)white;
+                            break;
+                        }
+                    }
+                    _white.Add(_whites, new Color32((byte)(RED_WHITE - i * _step), (byte)(GREEN_WHITE - j * _step), (byte)(BLUE_WHITE - k * _step), 255));
+                }
+            }
+        }
     }
 }
 
