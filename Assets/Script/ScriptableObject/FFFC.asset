@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e381d47c5a3744db5e382ba54df8ba, type: 3}
+  m_Name: FFFC
+  m_EditorClassIdentifier: 
+  _whiteList:
+  - _white: 18
+    _color: {r: 1, g: 0.9882353, b: 1, a: 1}
+  - _white: 19
+    _color: {r: 1, g: 0.9882353, b: 0.99607843, a: 1}
+  - _white: 20
+    _color: {r: 1, g: 0.9882353, b: 0.99215686, a: 1}
+  - _white: 21
+    _color: {r: 1, g: 0.9882353, b: 0.9882353, a: 1}
+  - _white: 22
+    _color: {r: 1, g: 0.9882353, b: 0.9843137, a: 1}
+  - _white: 23
+    _color: {r: 1, g: 0.9882353, b: 0.98039216, a: 1}
