@@ -29,7 +29,6 @@ public class WhiteSetter : MonoBehaviour
     {
         //色変更するオブジェクト取得
         _objects = GameObject.FindGameObjectsWithTag("White");
-        Debug.Log(_objects.Length);
         _squares = new WhiteSquare[_objects.Length];
 
         int whiteObj;
