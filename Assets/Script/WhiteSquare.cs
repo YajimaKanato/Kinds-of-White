@@ -4,13 +4,18 @@ using WhitePalette;
 
 public class WhiteSquare : MonoBehaviour
 {
+    [SerializeField] GameObject _check;
+
+    Image _image;
+    ImnotRobotManager _imnotRobot;
+
     Whites _whites;
     public Whites Whites { get { return _whites; } set { _whites = value; } }
 
     Color32 _whiteType;
     public Color32 WhiteType { get { return _whiteType; } set { _whiteType = value; } }
 
-    Image _image;
+    bool _isSelected;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,6 +25,8 @@ public class WhiteSquare : MonoBehaviour
             this.tag = "White";
         }
         WhiteSetting();
+        _check.SetActive(false);
+        _imnotRobot = FindFirstObjectByType<ImnotRobotManager>();
     }
 
     // Update is called once per frame
@@ -32,5 +39,20 @@ public class WhiteSquare : MonoBehaviour
     {
         _image = GetComponent<Image>();
         _image.color = _whiteType;
+    }
+
+    public void Selected()
+    {
+        _isSelected = !_isSelected;
+        if (_isSelected)
+        {
+            _imnotRobot.SelectWhite(this);
+            _check.SetActive(true);
+        }
+        else
+        {
+            _imnotRobot.UnSelectWhite(this);
+            _check.SetActive(false);
+        }
     }
 }
