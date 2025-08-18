@@ -471,6 +471,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1576228560}
+        m_TargetAssemblyTypeName: GameSelectButton, Assembly-CSharp
+        m_MethodName: Changing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &465259899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,6 +606,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1576228560}
         m_TargetAssemblyTypeName: GameSelectButton, Assembly-CSharp
         m_MethodName: RightChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1576228560}
+        m_TargetAssemblyTypeName: GameSelectButton, Assembly-CSharp
+        m_MethodName: Changing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -977,12 +1001,15 @@ MonoBehaviour:
   - {fileID: 1263287630}
   - {fileID: 621351663}
   - {fileID: 114954539}
-  _defaultPos: {x: 0, y: -150, z: 0}
-  _space: 650
   _animators:
   - {fileID: 1263287632}
   - {fileID: 621351665}
   - {fileID: 114954541}
+  _defaultPos: {x: 0, y: -150, z: 0}
+  _defaultScale: {x: 1, y: 1, z: 1}
+  _space: 650
+  _maxScale: 1
+  _minScale: 0.8
 --- !u!4 &1576228561
 Transform:
   m_ObjectHideFlags: 0
