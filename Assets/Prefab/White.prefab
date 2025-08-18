@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _check: {fileID: 1990988553247558750}
+  _maxScale: 1
+  _minScale: 0.9
 --- !u!1001 &1225597625993725629
 PrefabInstance:
   m_ObjectHideFlags: 0
