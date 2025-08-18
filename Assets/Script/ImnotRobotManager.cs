@@ -15,7 +15,7 @@ public class ImnotRobotManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _successText.text = "セキュリティ突破回数\n" + _successCount;
+        _successText.text = "セキュリティ\n連続突破回数\n" + _successCount;
         _selectList = new List<WhiteSquare>();
     }
 
@@ -37,7 +37,12 @@ public class ImnotRobotManager : MonoBehaviour
 
     public void PressedEnter()
     {
-        bool succes = true;
+        bool succes = false;
+        if (_selectList.Count > 0)
+        {
+            succes = true;
+        }
+
         foreach (WhiteSquare white in _selectList)
         {
             if (white.Whites != Whites.FFFFFF)
@@ -50,6 +55,10 @@ public class ImnotRobotManager : MonoBehaviour
         if (succes)
         {
             _successCount++;
+        }
+        else
+        {
+            _successCount = 0;
         }
     }
 }
