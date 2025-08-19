@@ -6,7 +6,8 @@ using WhitePalette;
 public class Card : MonoBehaviour
 {
     [SerializeField] Sprite _sprite;
-    GameObject _dontToutch;
+    [SerializeField] GameObject _dontToutch;
+    [SerializeField] GameObject _particle;
 
     Image _image;
     PairManager _pairManager;
@@ -32,7 +33,6 @@ public class Card : MonoBehaviour
         _image = GetComponent<Image>();
         _image.sprite = _sprite;
         _pairManager = FindFirstObjectByType<PairManager>();
-        _dontToutch = GameObject.Find("DontToutch");
         _dontToutch.SetActive(false);
     }
 
@@ -41,6 +41,13 @@ public class Card : MonoBehaviour
     {
         Debug.Log(_num + ":" + _whites.ToString());
         StartCoroutine(SelectCoroutine());
+    }
+
+    public void InstantiateParticle()
+    {//ÉèÅ[ÉãÉhç¿ïWÇ…ïœä∑
+        Vector3 pos = Camera.main.ScreenToWorldPoint(transform.position);
+        pos.z = 0;
+        Instantiate(_particle, pos, Quaternion.identity);
     }
 
     IEnumerator SelectCoroutine()

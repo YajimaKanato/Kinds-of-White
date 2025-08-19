@@ -8,12 +8,11 @@ using UnityEngine.UI;
 public class PairManager : MonoBehaviour
 {
     [SerializeField] Text _clearText;
+    [SerializeField] GameObject _enterObj;
 
     Card[] _cards;
     List<Whites> _whitesList;
     List<Card> _selectedCard = new List<Card>();
-
-    Whites _whites;
 
     int _pairCount = 0;
 
@@ -22,6 +21,7 @@ public class PairManager : MonoBehaviour
     {
         _pairCount = 0;
         _clearText.text = "";
+        _enterObj.SetActive(false);
         WhiteSetting();
     }
 
@@ -67,29 +67,37 @@ public class PairManager : MonoBehaviour
             if (_selectedCard[0].Whites == _selectedCard[1].Whites)
             {
                 _selectedCard[0].gameObject.SetActive(false);
+                _selectedCard[0].InstantiateParticle();
                 _selectedCard[1].gameObject.SetActive(false);
+                _selectedCard[1].InstantiateParticle();
                 _selectedCard.Clear();
             }
             else
             {
-                StartCoroutine(UnSelecteCard(_selectedCard));
+                _enterObj.SetActive(true);
             }
         }
 
         if (_pairCount == _cards.Length)
         {
+            GetComponent<Timer>().IsEnd = true;
             _clearText.text = "Nice White!!";
         }
     }
 
+    public void Enter()
+    {
+        StartCoroutine(UnSelecteCard(_selectedCard));
+    }
+
     IEnumerator UnSelecteCard(List<Card> list)
     {
-        yield return new WaitForSeconds(0.5f);
         foreach (var card in list)
         {
             card.SelectCard();
         }
         _selectedCard.Clear();
+        _enterObj.SetActive(false);
         yield break;
     }
 }
