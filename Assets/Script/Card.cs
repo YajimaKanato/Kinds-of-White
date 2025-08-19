@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 using WhitePalette;
@@ -7,7 +6,7 @@ using WhitePalette;
 public class Card : MonoBehaviour
 {
     [SerializeField] Sprite _sprite;
-    [SerializeField] GameObject _dontToutch;
+    GameObject _dontToutch;
 
     Image _image;
     PairManager _pairManager;
@@ -20,6 +19,8 @@ public class Card : MonoBehaviour
 
     bool _isOpened = false;
     public bool IsOpened { get { return _isOpened; } }
+    int _num;
+    public int Num { get { return _num; } set { _num = value; } }
 
     const int TURNFRAME = 30;
     private void Start()
@@ -31,14 +32,14 @@ public class Card : MonoBehaviour
         _image = GetComponent<Image>();
         _image.sprite = _sprite;
         _pairManager = FindFirstObjectByType<PairManager>();
+        _dontToutch = GameObject.Find("DontToutch");
         _dontToutch.SetActive(false);
     }
 
     [ContextMenu("Turn")]
     public void SelectCard()
     {
-        Debug.Log(_whites.ToString());
-        _pairManager.SelectedCrad(this);
+        Debug.Log(_num + ":" + _whites.ToString());
         StartCoroutine(SelectCoroutine());
     }
 
@@ -52,7 +53,6 @@ public class Card : MonoBehaviour
         {
             delta++;
             transform.rotation *= Quaternion.AngleAxis(rot.y / TURNFRAME, Vector3.up);
-            //transform.Rotate(rot * Time.deltaTime / HALFTURN);
 
             if (transform.rotation.eulerAngles.y <= -90 || 90 <= transform.rotation.eulerAngles.y)
             {
@@ -69,6 +69,15 @@ public class Card : MonoBehaviour
             {
                 _dontToutch.SetActive(false);
                 transform.rotation = Quaternion.Euler(startRot + rot);
+                if (!_isOpened)
+                {
+                    _pairManager.SelectedCrad(this);
+                    _isOpened = true;
+                }
+                else
+                {
+                    _isOpened = false;
+                }
                 yield break;
             }
             yield return null;
