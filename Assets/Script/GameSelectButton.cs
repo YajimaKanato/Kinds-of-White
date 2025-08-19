@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GameSelectButton : MonoBehaviour
 {
-    [SerializeField] GameObject _dontToucth;
+    [SerializeField] GameObject _dontToutch;
     [SerializeField] List<GameObject> _gameSelectList;
     [SerializeField] List<Animator> _animators;
     [SerializeField] Vector3 _defaultPos;
@@ -41,7 +41,7 @@ public class GameSelectButton : MonoBehaviour
             }
             count++;
         }
-        _dontToucth.SetActive(false);
+        _dontToutch.SetActive(false);
     }
 
     public void RightChange()
@@ -94,7 +94,7 @@ public class GameSelectButton : MonoBehaviour
 
     IEnumerator RightMoveCoroutine(GameObject obj)
     {
-        _dontToucth.SetActive(true);
+        _dontToutch.SetActive(true);
         float delta = 0;
         Vector3 startPos = obj.transform.localPosition;
         Vector3 move = new Vector3(_space, 0, 0);
@@ -105,7 +105,7 @@ public class GameSelectButton : MonoBehaviour
             if (delta >= ANIMATIONRANGE + EXTRA)
             {
                 obj.transform.localPosition = startPos + move;
-                _dontToucth.SetActive(false);
+                _dontToutch.SetActive(false);
                 yield break;
             }
             yield return null;
@@ -114,7 +114,7 @@ public class GameSelectButton : MonoBehaviour
 
     IEnumerator LeftMoveCoroutine(GameObject obj)
     {
-        _dontToucth.SetActive(true);
+        _dontToutch.SetActive(true);
         float delta = 0;
         Vector3 startPos = obj.transform.localPosition;
         Vector3 move = new Vector3(_space, 0, 0);
@@ -125,7 +125,7 @@ public class GameSelectButton : MonoBehaviour
             if (delta > ANIMATIONRANGE + EXTRA)
             {
                 obj.transform.localPosition = startPos - move;
-                _dontToucth.SetActive(false);
+                _dontToutch.SetActive(false);
                 yield break;
             }
             yield return null;
