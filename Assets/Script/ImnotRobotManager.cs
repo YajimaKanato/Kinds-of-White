@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ImnotRobotManager : MonoBehaviour
 {
+    [SerializeField] GameObject _image;
+    [SerializeField] Text _text;
     [SerializeField] Text _successText;
 
     List<WhiteSquare> _selectList;
@@ -16,6 +18,8 @@ public class ImnotRobotManager : MonoBehaviour
     void Start()
     {
         _successText.text = "セキュリティ\n連続突破回数\n" + _successCount;
+        _text.text = "";
+        _image.SetActive(false);
         _selectList = new List<WhiteSquare>();
     }
 
@@ -52,12 +56,16 @@ public class ImnotRobotManager : MonoBehaviour
             }
         }
 
+        _image.SetActive(true);
+
         if (succes)
         {
+            _text.text = "Nice White!!";
             _successCount++;
         }
         else
         {
+            _text.text = "Not White...";
             _successCount = 0;
         }
     }

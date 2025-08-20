@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class ButtonAction : MonoBehaviour
 {
@@ -27,6 +28,13 @@ public class ButtonAction : MonoBehaviour
     public void Enter(ImnotRobotManager robot)
     {
         robot.PressedEnter();
-        SceneTransition("White");
+        StartCoroutine(WaitCoroutine());
     }
+    
+    IEnumerator WaitCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneTransition("Security");
+        yield break;
+    } 
 }
