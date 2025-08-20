@@ -5,6 +5,7 @@ public class Info : MonoBehaviour
 {
     Coroutine _openCoroutine;
     Coroutine _closeCoroutine;
+    Timer _timer;
 
     Vector3 _defaultScale;
 
@@ -13,14 +14,20 @@ public class Info : MonoBehaviour
 
     const float SCALETIME = 0.5f;
 
-    private void Start()
+    private void Awake()
     {
+        _timer = FindFirstObjectByType<Timer>();
         _defaultScale = transform.localScale;
+        Debug.Log(_defaultScale);
         gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
+        if( _timer != null)
+        {
+            _timer.IsEnd = true;
+        }
         if (_openCoroutine == null)
         {
             _openCoroutine = StartCoroutine(OpenCoroutine());
@@ -75,6 +82,10 @@ public class Info : MonoBehaviour
             {
                 transform.localScale = _defaultScale * _minScale;
                 gameObject.SetActive(false);
+                if(_timer != null)
+                {
+                    _timer.IsEnd = false;
+                }
                 yield break;
             }
             yield return null;

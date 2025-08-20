@@ -558,8 +558,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _seData:
-  - _actionName: 
-    _se: {fileID: 0}
+  - _actionName: NormalButton
+    _se: {fileID: 8300000, guid: cf27f218cc5154c40ab3d011bf7b111d, type: 3}
+  - _actionName: SelectButton
+    _se: {fileID: 8300000, guid: d6fe8eda54714c54493d8bb43b99513b, type: 3}
+  - _actionName: GoGame
+    _se: {fileID: 8300000, guid: cb42a331473168844b51039f65743370, type: 3}
+  - _actionName: BackButton
+    _se: {fileID: 8300000, guid: 226eb696954783244a09f39cafe3d5bb, type: 3}
+  - _actionName: WhiteSelect
+    _se: {fileID: 8300000, guid: 267151a276e96384b9679ae7ced91786, type: 3}
+  - _actionName: CardSelect
+    _se: {fileID: 8300000, guid: 67d40bf6a7de414468e5fdfa9b3819ac, type: 3}
+  - _actionName: Slide
+    _se: {fileID: 8300000, guid: f32f707ffda63864ba3806c214330327, type: 3}
+  - _actionName: NiceWhite
+    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+  - _actionName: NotWhite
+    _se: {fileID: 8300000, guid: 516a546ff50d64b44978bb5dff3f5f53, type: 3}
+  - _actionName: MakePair
+    _se: {fileID: 8300000, guid: ca443fd7b9c40844ab2fb1def6428e10, type: 3}
 --- !u!4 &475748508
 Transform:
   m_ObjectHideFlags: 0
@@ -1207,8 +1225,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneData:
-  - _sceneName: 
-    _clip: {fileID: 0}
+  - _sceneName: Title
+    _clip: {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
+  - _sceneName: Security
+    _clip: {fileID: 8300000, guid: 458dd8822518c4f37bc3edba9b6c57d9, type: 3}
+  - _sceneName: Pair
+    _clip: {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
+  - _sceneName: SlidePuzzle
+    _clip: {fileID: 8300000, guid: 3fc26869a512b4e5187c9be6310ad8c2, type: 3}
 --- !u!82 &1357486479
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1219,12 +1243,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
+  m_Resource: {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

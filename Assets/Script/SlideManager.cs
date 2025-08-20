@@ -114,6 +114,7 @@ public class SlideManager : MonoBehaviour
 
             if (isAllMatch)
             {
+                GetComponent<Timer>().IsEnd = true;
                 _text.text = "Nice White!!";
                 _filter.SetActive(true);
             }
