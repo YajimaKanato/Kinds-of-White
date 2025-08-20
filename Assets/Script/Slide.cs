@@ -4,6 +4,8 @@ using WhitePalette;
 
 public class Slide : MonoBehaviour
 {
+    [SerializeField] GameObject _check;
+
     SlideManager _slideManager;
     Image _image;
     Whites _whites;
@@ -18,6 +20,7 @@ public class Slide : MonoBehaviour
         _image = GetComponent<Image>();
         _image.color = _whiteType;
         _slideManager = FindFirstObjectByType<SlideManager>();
+        _check.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,7 +31,14 @@ public class Slide : MonoBehaviour
 
     public void Select()
     {
+        Debug.Log(_whites.ToString());
+        _check.SetActive(true);
         _slideManager.AddList(this);
+    }
+
+    public void UnSelect()
+    {
+        _check.SetActive(false);
     }
 
     public void PositionChange(Vector3 pos)

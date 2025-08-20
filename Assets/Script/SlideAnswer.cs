@@ -17,4 +17,9 @@ public class SlideAnswer : MonoBehaviour
         _image = GetComponent<Image>();
         _image.color = _whiteType;
     }
+
+    public void FindColor()
+    {
+        Debug.Log(_whites.ToString());
+    }
 }
