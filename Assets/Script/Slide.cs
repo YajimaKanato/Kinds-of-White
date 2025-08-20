@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using WhitePalette;
@@ -43,6 +44,25 @@ public class Slide : MonoBehaviour
 
     public void PositionChange(Vector3 pos)
     {
-        transform.localPosition = pos;
+        StartCoroutine(MoveCoroutine(pos));
+    }
+
+    IEnumerator MoveCoroutine(Vector3 pos)
+    {
+        float delta = 0;
+        Vector3 startPos = transform.localPosition;
+        Vector3 move = pos - transform.localPosition;
+        while (true)
+        {
+            delta += Time.deltaTime;
+            transform.localPosition = startPos + move * delta / 0.5f;
+            if (delta >= 0.5f)
+            {
+                transform.localPosition = startPos + move;
+                UnSelect();
+                yield break;
+            }
+            yield return null;
+        }
     }
 }

@@ -90,8 +90,6 @@ public class SlideManager : MonoBehaviour
             Vector3 pos2 = _selectSlide[1].gameObject.transform.localPosition;
             _selectSlide[0].PositionChange(pos2);
             _selectSlide[1].PositionChange(pos1);
-            _selectSlide[0].UnSelect();
-            _selectSlide[1].UnSelect();
             _selectSlide.Clear();
 
             if (_selectIndex[0] != -1 && _selectIndex[1] != -1)
