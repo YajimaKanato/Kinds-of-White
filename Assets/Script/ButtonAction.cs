@@ -7,12 +7,26 @@ public class ButtonAction : MonoBehaviour
 {
     public void InfoOpen(GameObject info)
     {
+        SEManager.SEPlay("NormalButton");
         info.SetActive(true);
     }
 
     public void InfoClose(GameObject info)
     {
+        SEManager.SEPlay("NormalButton");
         info.SetActive(false);
+    }
+
+    public void GoGame(string name)
+    {
+        SEManager.SEPlay("GoGame");
+        SceneTransition(name);
+    }
+
+    public void GoBack(string name)
+    {
+        SEManager.SEPlay("BackButton");
+        SceneTransition(name);
     }
 
     public void SceneTransition(string sceneName)
@@ -22,6 +36,7 @@ public class ButtonAction : MonoBehaviour
 
     public void Hint(Text text)
     {
+        SEManager.SEPlay("NormalButton");
         text.text = "îíÇÃêîÅF" + FindFirstObjectByType<WhiteSetter>().WhiteNum;
     }
 

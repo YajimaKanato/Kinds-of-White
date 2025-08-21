@@ -66,11 +66,13 @@ public class PairManager : MonoBehaviour
         {
             if (_selectedCard[0].Whites == _selectedCard[1].Whites)
             {
+                SEManager.SEPlay("MakePair");
                 _selectedCard[0].gameObject.SetActive(false);
                 _selectedCard[0].InstantiateParticle();
                 _selectedCard[1].gameObject.SetActive(false);
                 _selectedCard[1].InstantiateParticle();
                 _selectedCard.Clear();
+                _pairCount++;
             }
             else
             {
@@ -81,12 +83,14 @@ public class PairManager : MonoBehaviour
         if (_pairCount == _cards.Length)
         {
             GetComponent<Timer>().IsEnd = true;
+            SEManager.SEPlay("NiceWhite");
             _clearText.text = "Nice White!!";
         }
     }
 
     public void Enter()
     {
+        SEManager.SEPlay("NormalButton");
         StartCoroutine(UnSelecteCard(_selectedCard));
     }
 

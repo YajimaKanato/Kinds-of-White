@@ -40,6 +40,7 @@ public class Card : MonoBehaviour
     public void SelectCard()
     {
         Debug.Log(_num + ":" + _whites.ToString());
+        SEManager.SEPlay("CardSelect");
         StartCoroutine(SelectCoroutine());
     }
 
@@ -60,8 +61,7 @@ public class Card : MonoBehaviour
         {
             delta++;
             transform.rotation *= Quaternion.AngleAxis(rot.y / TURNFRAME, Vector3.up);
-
-            if (transform.rotation.eulerAngles.y <= -90 || 90 <= transform.rotation.eulerAngles.y)
+            if (90 <= transform.rotation.eulerAngles.y && transform.rotation.eulerAngles.y <= 270)
             {
                 _image.sprite = null;
                 _image.color = _whiteType;

@@ -48,6 +48,7 @@ public class GameSelectButton : MonoBehaviour
     {
         if (!_isChanging)
         {
+            SEManager.SEPlay("SelectButton");
             if (_nowSelectIndex < _selectIndex - 1)
             {
                 for (int i = 0; i < _selectIndex; i++)
@@ -72,6 +73,7 @@ public class GameSelectButton : MonoBehaviour
     {
         if (!_isChanging)
         {
+            SEManager.SEPlay("SelectButton");
             if (_nowSelectIndex > 0)
             {
                 for (int i = 0; i < _selectIndex; i++)

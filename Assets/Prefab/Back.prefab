@@ -123,7 +123,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -8665663487240899184}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: SceneTransition
+        m_MethodName: GoBack
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

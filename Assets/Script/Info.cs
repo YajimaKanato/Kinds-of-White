@@ -18,7 +18,6 @@ public class Info : MonoBehaviour
     {
         _timer = FindFirstObjectByType<Timer>();
         _defaultScale = transform.localScale;
-        Debug.Log(_defaultScale);
         gameObject.SetActive(false);
     }
 
@@ -50,6 +49,7 @@ public class Info : MonoBehaviour
             StopCoroutine(_closeCoroutine);
             _closeCoroutine = null;
         }
+        SEManager.SEPlay("BackButton");
         _closeCoroutine = StartCoroutine(CloseCoroutine());
     }
 

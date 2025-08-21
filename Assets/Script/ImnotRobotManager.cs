@@ -60,11 +60,13 @@ public class ImnotRobotManager : MonoBehaviour
 
         if (succes)
         {
+            SEManager.SEPlay("NiceWhite");
             _text.text = "Nice White!!";
             _successCount++;
         }
         else
         {
+            SEManager.SEPlay("NotWhite");
             _text.text = "Not White...";
             _successCount = 0;
         }

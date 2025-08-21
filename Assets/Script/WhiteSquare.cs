@@ -47,6 +47,7 @@ public class WhiteSquare : MonoBehaviour
 
     public void Selected()
     {
+        SEManager.SEPlay("WhiteSelect");
         _isSelected = !_isSelected;
         if (_isSelected)
         {

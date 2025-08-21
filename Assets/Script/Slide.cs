@@ -33,6 +33,7 @@ public class Slide : MonoBehaviour
     public void Select()
     {
         Debug.Log(_whites.ToString());
+        SEManager.SEPlay("WhiteSelect");
         _check.SetActive(true);
         _slideManager.AddList(this);
     }
@@ -44,6 +45,7 @@ public class Slide : MonoBehaviour
 
     public void PositionChange(Vector3 pos)
     {
+        SEManager.SEPlay("Slide");
         StartCoroutine(MoveCoroutine(pos));
     }
 
