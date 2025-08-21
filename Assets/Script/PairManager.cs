@@ -25,6 +25,17 @@ public class PairManager : MonoBehaviour
         WhiteSetting();
     }
 
+    private void Update()
+    {
+        if (_selectedCard.Count >= 2)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Enter();
+            }
+        }
+    }
+
     void WhiteSetting()
     {
         _cards = FindObjectsByType<Card>(FindObjectsSortMode.None);
@@ -80,7 +91,7 @@ public class PairManager : MonoBehaviour
             }
         }
 
-        if (_pairCount == _cards.Length)
+        if (_pairCount == _cards.Length / 2)
         {
             GetComponent<Timer>().IsEnd = true;
             SEManager.SEPlay("NiceWhite");

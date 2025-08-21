@@ -6,6 +6,7 @@ using WhitePalette;
 public class Card : MonoBehaviour
 {
     [SerializeField] Sprite _sprite;
+    [SerializeField] Sprite _sprite2;
     [SerializeField] GameObject _dontToutch;
     [SerializeField] GameObject _particle;
 
@@ -63,7 +64,7 @@ public class Card : MonoBehaviour
             transform.rotation *= Quaternion.AngleAxis(rot.y / TURNFRAME, Vector3.up);
             if (90 <= transform.rotation.eulerAngles.y && transform.rotation.eulerAngles.y <= 270)
             {
-                _image.sprite = null;
+                _image.sprite = _sprite2;
                 _image.color = _whiteType;
             }
             else

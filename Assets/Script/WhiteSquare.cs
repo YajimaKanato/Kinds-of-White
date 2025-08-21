@@ -5,6 +5,7 @@ using WhitePalette;
 public class WhiteSquare : MonoBehaviour
 {
     [SerializeField] GameObject _check;
+    [SerializeField] GameObject _answer;
     [SerializeField] float _maxScale = 1.0f;
     [SerializeField] float _minScale = 0.9f;
 
@@ -29,6 +30,7 @@ public class WhiteSquare : MonoBehaviour
         }
         WhiteSetting();
         _check.SetActive(false);
+        _answer.SetActive(false);
         _imnotRobot = FindFirstObjectByType<ImnotRobotManager>();
         _scale = transform.localScale;
     }
@@ -60,6 +62,15 @@ public class WhiteSquare : MonoBehaviour
             transform.localScale = _scale * _maxScale;
             _imnotRobot.UnSelectWhite(this);
             _check.SetActive(false);
+        }
+    }
+
+    public void AnswerOpen()
+    {
+        if (_whites == Whites.FFFFFF)
+        {
+            Debug.Log(_whites.ToString());
+            _answer.SetActive(true);
         }
     }
 }

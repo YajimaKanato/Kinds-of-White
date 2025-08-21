@@ -6,7 +6,6 @@ public class GameSelectButton : MonoBehaviour
 {
     [SerializeField] GameObject _dontToutch;
     [SerializeField] List<GameObject> _gameSelectList;
-    [SerializeField] List<Animator> _animators;
     [SerializeField] Vector3 _defaultPos;
     [SerializeField] Vector3 _defaultScale;
     [SerializeField] float _space = 650;
@@ -14,7 +13,7 @@ public class GameSelectButton : MonoBehaviour
     [SerializeField] float _minScale = 0.8f;
 
     int _selectIndex;
-    int _nowSelectIndex = 0;
+    static int _nowSelectIndex = 0;
     bool _isChanging = false;
     const float ANIMATIONRANGE = 0.83f;
     const float EXTRA = 0.15f;
@@ -27,7 +26,7 @@ public class GameSelectButton : MonoBehaviour
     void GameSelectSetting()
     {
         _selectIndex = _gameSelectList.Count;
-        int count = 0;
+        int count = 0 - _nowSelectIndex;
         foreach (var gameSelect in _gameSelectList)
         {
             gameSelect.transform.localPosition = _defaultPos + new Vector3(_space * count, 0, 0);
@@ -53,7 +52,6 @@ public class GameSelectButton : MonoBehaviour
             {
                 for (int i = 0; i < _selectIndex; i++)
                 {
-                    _gameSelectList[i].transform.localPosition = new Vector3(_gameSelectList[i].transform.localPosition.x, _defaultPos.y, _gameSelectList[i].transform.localPosition.z);
                     StartCoroutine(LeftMoveCoroutine(_gameSelectList[i]));
                     if (i == _nowSelectIndex)
                     {
@@ -78,7 +76,6 @@ public class GameSelectButton : MonoBehaviour
             {
                 for (int i = 0; i < _selectIndex; i++)
                 {
-                    _gameSelectList[i].transform.localPosition = new Vector3(_gameSelectList[i].transform.localPosition.x, _defaultPos.y, _gameSelectList[i].transform.localPosition.z);
                     StartCoroutine(RightMoveCoroutine(_gameSelectList[i]));
                     if (i == _nowSelectIndex)
                     {
@@ -100,13 +97,20 @@ public class GameSelectButton : MonoBehaviour
         float delta = 0;
         Vector3 startPos = obj.transform.localPosition;
         Vector3 move = new Vector3(_space, 0, 0);
+        Vector3 newPos;
         while (true)
         {
             delta += Time.deltaTime / ANIMATIONRANGE;
-            obj.transform.localPosition = startPos + move * delta;
+            newPos = obj.transform.localPosition;
+            newPos.x = (startPos + move * delta).x;
+            newPos.z = (startPos + move * delta).z;
+            obj.transform.localPosition = newPos;
             if (delta >= ANIMATIONRANGE + EXTRA)
             {
-                obj.transform.localPosition = startPos + move;
+                newPos = obj.transform.localPosition;
+                newPos.x = (startPos + move).x;
+                newPos.z = (startPos + move).z;
+                obj.transform.localPosition = newPos;
                 _dontToutch.SetActive(false);
                 yield break;
             }
@@ -120,13 +124,20 @@ public class GameSelectButton : MonoBehaviour
         float delta = 0;
         Vector3 startPos = obj.transform.localPosition;
         Vector3 move = new Vector3(_space, 0, 0);
+        Vector3 newPos;
         while (true)
         {
             delta += Time.deltaTime / ANIMATIONRANGE;
-            obj.transform.localPosition = startPos - move * delta;
+            newPos = obj.transform.localPosition;
+            newPos.x = (startPos - move * delta).x;
+            newPos.z = (startPos - move * delta).z;
+            obj.transform.localPosition = newPos;
             if (delta > ANIMATIONRANGE + EXTRA)
             {
-                obj.transform.localPosition = startPos - move;
+                newPos = obj.transform.localPosition;
+                newPos.x = (startPos - move).x;
+                newPos.z = (startPos - move).z;
+                obj.transform.localPosition = newPos;
                 _dontToutch.SetActive(false);
                 yield break;
             }

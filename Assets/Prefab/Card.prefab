@@ -146,5 +146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: -4457850898058260020, guid: 77855485498c4424ab1c7d1fa17f01ab, type: 3}
+  _sprite2: {fileID: 21300000, guid: 02bc6413e9c541c4c8fd2e7501c27232, type: 3}
   _dontToutch: {fileID: 1538878636356024818, guid: ee25a43ec6d6cd64ca6406773d560c83, type: 3}
   _particle: {fileID: 8785715586122148264, guid: 4b7325018b8c12947acc14e0b7d0dc11, type: 3}

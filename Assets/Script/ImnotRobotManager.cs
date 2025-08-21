@@ -11,6 +11,8 @@ public class ImnotRobotManager : MonoBehaviour
 
     List<WhiteSquare> _selectList;
 
+    int _count = 0;
+
     static int _successCount;
     public static int SuccessCount { get { return _successCount; } }
 
@@ -47,8 +49,10 @@ public class ImnotRobotManager : MonoBehaviour
             succes = true;
         }
 
+        _count = 0;
         foreach (WhiteSquare white in _selectList)
         {
+            _count++;
             if (white.Whites != Whites.FFFFFF)
             {
                 succes = false;
@@ -58,7 +62,13 @@ public class ImnotRobotManager : MonoBehaviour
 
         _image.SetActive(true);
 
-        if (succes)
+        WhiteSquare[] squares = FindObjectsByType<WhiteSquare>(FindObjectsSortMode.None);
+        foreach (WhiteSquare white in squares)
+        {
+            white.AnswerOpen();
+        }
+
+        if (succes && _count == FindFirstObjectByType<WhiteSetter>().WhiteNum)
         {
             SEManager.SEPlay("NiceWhite");
             _text.text = "Nice White!!";
