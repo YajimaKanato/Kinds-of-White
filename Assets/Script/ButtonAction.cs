@@ -34,6 +34,12 @@ public class ButtonAction : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void Retry(string name)
+    {
+        SEManager.SEPlay("NormalButton");
+        SceneManager.LoadScene(name);
+    }
+
     public void Hint(Text text)
     {
         SEManager.SEPlay("NormalButton");
