@@ -2458,10 +2458,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7801660916747253645, guid: 870cf4782f2c810498ba9525d00d36f3, type: 3}
+      propertyPath: _mixerName
+      value: SE
+      objectReference: {fileID: 0}
+    - target: {fileID: 7801660916747253645, guid: 870cf4782f2c810498ba9525d00d36f3, type: 3}
+      propertyPath: _audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 08a0ccc28c8782f41ba669f37ccd1c89, type: 2}
     - target: {fileID: 7994672190365754697, guid: 870cf4782f2c810498ba9525d00d36f3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8202379236700306385, guid: 870cf4782f2c810498ba9525d00d36f3, type: 3}
+      propertyPath: _mixerName
+      value: BGM
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202379236700306385, guid: 870cf4782f2c810498ba9525d00d36f3, type: 3}
+      propertyPath: _audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 08a0ccc28c8782f41ba669f37ccd1c89, type: 2}
     - target: {fileID: 9128457785047983834, guid: 870cf4782f2c810498ba9525d00d36f3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
