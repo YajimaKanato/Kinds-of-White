@@ -3693,8 +3693,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6367258449736326322, guid: bb4d1a5b3a3c61c4f87685be075cfd12, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367258449736326322, guid: bb4d1a5b3a3c61c4f87685be075cfd12, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367258449736326322, guid: bb4d1a5b3a3c61c4f87685be075cfd12, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 964277762}
+    - target: {fileID: 6367258449736326322, guid: bb4d1a5b3a3c61c4f87685be075cfd12, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367258449736326322, guid: bb4d1a5b3a3c61c4f87685be075cfd12, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SaveCount
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367258449736326322, guid: bb4d1a5b3a3c61c4f87685be075cfd12, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ImnotRobotManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367258449736326322, guid: bb4d1a5b3a3c61c4f87685be075cfd12, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Title
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367258449736326322, guid: bb4d1a5b3a3c61c4f87685be075cfd12, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7075827355837157224, guid: bb4d1a5b3a3c61c4f87685be075cfd12, type: 3}
       propertyPath: m_Name

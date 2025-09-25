@@ -14,6 +14,7 @@ public class GameSelectButton : MonoBehaviour
 
     int _selectIndex;
     static int _nowSelectIndex = 0;
+    public static int NowSelectIndex { get { return _nowSelectIndex; } }
     bool _isChanging = false;
     const float ANIMATIONRANGE = 0.83f;
     const float EXTRA = 0.15f;

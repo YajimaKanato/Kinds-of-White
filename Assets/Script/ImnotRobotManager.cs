@@ -14,7 +14,6 @@ public class ImnotRobotManager : MonoBehaviour
     int _count = 0;
 
     static int _successCount;
-    public static int SuccessCount { get { return _successCount; } }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,12 +22,6 @@ public class ImnotRobotManager : MonoBehaviour
         _text.text = "";
         _image.SetActive(false);
         _selectList = new List<WhiteSquare>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void SelectWhite(WhiteSquare white)
@@ -78,7 +71,16 @@ public class ImnotRobotManager : MonoBehaviour
         {
             SEManager.SEPlay("NotWhite");
             _text.text = "Not White...";
+            if (_successCount > 0)
+            {
+                SaveCount();
+            }
             _successCount = 0;
         }
+    }
+
+    public void SaveCount()
+    {
+        MemoriesManager.SecurityMemoriesSave(_successCount);
     }
 }

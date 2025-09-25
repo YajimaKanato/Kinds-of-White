@@ -2828,7 +2828,7 @@ GameObject:
   - component: {fileID: 1567878039}
   - component: {fileID: 1567878042}
   m_Layer: 5
-  m_Name: Easy (1)
+  m_Name: Retry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
