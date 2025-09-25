@@ -10,11 +10,13 @@ public class Timer : MonoBehaviour
     float _hour = 0;
     string _time;
     bool _isEnd = false;
+    bool _isMemoried = false;
     public bool IsEnd { get { return _isEnd; } set { _isEnd = value; } }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _isMemoried = false;
         _text.text = "";
     }
 
@@ -39,13 +41,17 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            if (GameSelectButton.NowSelectIndex == 1)
+            if (!_isMemoried)
             {
-                PairSave();
-            }
-            else if (GameSelectButton.NowSelectIndex == 2)
-            {
-                SlideSave();
+                if (GameSelectButton.NowSelectIndex == 1)
+                {
+                    PairSave();
+                }
+                else if (GameSelectButton.NowSelectIndex == 2)
+                {
+                    SlideSave();
+                }
+                _isMemoried = true;
             }
         }
     }

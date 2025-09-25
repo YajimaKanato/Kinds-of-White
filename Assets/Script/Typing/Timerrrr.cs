@@ -7,10 +7,12 @@ public class Timerrrr : ObjectBase
     [SerializeField] float _timeLimit = 60;
     [SerializeField] Text _nice;
     [SerializeField] GameObject _button;
+    [SerializeField] TypingManager _typingManager;
 
     Text _text;
 
     float _delta;
+    bool _isMemoried = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +21,7 @@ public class Timerrrr : ObjectBase
         _delta = _timeLimit;
         _nice.text = "";
         _button.SetActive(false);
+        _isMemoried = false;
     }
 
     // Update is called once per frame
@@ -42,6 +45,22 @@ public class Timerrrr : ObjectBase
                 _text.text = _delta.ToString("00.00");
                 _nice.text = "Nice White!!";
                 _button.SetActive(true);
+                if (!_isMemoried)
+                {
+                    _isMemoried = true;
+                    switch (StartSign.LevelIndex)
+                    {
+                        case 0:
+                            MemoriesManager.TypingEasyMemoriesSave(_typingManager.Score);
+                            break;
+                        case 1:
+                            MemoriesManager.TypingNormalMemoriesSave(_typingManager.Score);
+                            break;
+                        case 2:
+                            MemoriesManager.TypingHardMemoriesSave(_typingManager.Score);
+                            break;
+                    }
+                }
             }
         }
     }

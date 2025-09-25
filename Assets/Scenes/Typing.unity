@@ -756,6 +756,7 @@ MonoBehaviour:
   _timeLimit: 60
   _nice: {fileID: 470749637}
   _button: {fileID: 1567878037}
+  _typingManager: {fileID: 795340220}
 --- !u!1 &382861649
 GameObject:
   m_ObjectHideFlags: 0
