@@ -4,32 +4,15 @@ using UnityEngine.UI;
 
 public class SlotManager : MonoBehaviour
 {
-    [SerializeField] Text _rightText, _centerText, _leftText;
-    [SerializeField] float _rightReelInterval = 0.5f;
-    [SerializeField] float _centerReelInterval = 0.7f;
-    [SerializeField] float _leftReelInterval = 0.3f;
+    [SerializeField] ReelBase _rightRB, _centerRB, _leftRB;
 
     List<int> _rightReel = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
     List<int> _centerReel = new List<int>() { 1, 6, 3, 8, 0, 4, 9, 13, 2, 5, 10, 12, 7, 11 };
     List<int> _leftReel = new List<int>() { 9, 7, 5, 3, 4, 6, 8, 13, 0, 12, 11, 10, 1, 2 };
     List<string> _reelImage = new List<string>() { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
 
-    int _rightIndex, _centerIndex, _leftIndex;
+    static int _rightIndex, _centerIndex, _leftIndex;
     bool _stopRight, _stopCenter, _stopLeft;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (_stopRight && _stopCenter && _stopLeft)
-        {
-            RestartReel();
-        }
-    }
 
     public void MoveRightReel(Text text, int diff)
     {
@@ -64,24 +47,43 @@ public class SlotManager : MonoBehaviour
         _leftIndex %= _leftReel.Count;
     }
 
-    public void StopReel(int pos)
+    /// <summary>
+    /// リールの回転を停止させる関数
+    /// </summary>
+    /// <param name="num">停止させるリールの番号（左から0,1,2）</param>
+    public void StopReel(int num)
     {
-        switch (pos)
+        switch (num)
         {
             case 0:
                 _stopRight = true;
+                _rightRB.StopReel(_stopRight);
                 break;
             case 1:
                 _stopCenter = true;
+                _centerRB.StopReel(_stopCenter);
                 break;
             case 2:
                 _stopLeft = true;
+                _leftRB.StopReel(_stopLeft);
                 break;
         }
     }
 
-    void RestartReel()
+    /// <summary>
+    /// リールを回転させる関数
+    /// </summary>
+    public void StartReel()
     {
-        _stopRight = _stopCenter = _stopLeft = false;
+        //すべてのリールが止まってるときにリール回転開始
+        if (_stopRight && _stopCenter && _stopLeft)
+        {
+            _stopRight = false;
+            _stopCenter = false;
+            _stopLeft = false;
+            _rightRB.MoveReel(_stopRight);
+            _centerRB.MoveReel(_stopCenter);
+            _leftRB.MoveReel(_stopLeft);
+        }
     }
 }
