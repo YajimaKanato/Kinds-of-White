@@ -6,17 +6,18 @@ public class SlotManager : MonoBehaviour
 {
     [SerializeField] ReelBase _rightRB, _centerRB, _leftRB;
 
-    List<int> _rightReel = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
-    List<int> _centerReel = new List<int>() { 1, 6, 3, 8, 0, 4, 9, 13, 2, 5, 10, 12, 7, 11 };
-    List<int> _leftReel = new List<int>() { 9, 7, 5, 3, 4, 6, 8, 13, 0, 12, 11, 10, 1, 2 };
-    List<string> _reelImage = new List<string>() { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+    List<int> _rightReel = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    List<int> _centerReel = new List<int>() { 1, 6, 3, 8, 4, 9, 2, 5, 7 };
+    List<int> _leftReel = new List<int>() { 9, 7, 5, 3, 4, 6, 8, 1, 2 };
+    List<string> _reelImage = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
-    static int _rightIndex, _centerIndex, _leftIndex;
+    static int _rightIndex = 0, _centerIndex = 0, _leftIndex = 0;
+    int r, c, l;
     bool _stopRight, _stopCenter, _stopLeft;
 
     public void MoveRightReel(Text text, int diff)
     {
-        text.text = _reelImage[_rightReel[(_rightIndex + diff) % _rightReel.Count]];
+        text.text = _reelImage[_rightReel[(_rightIndex + diff) % _rightReel.Count] - 1];
     }
 
     public void RightIndexNext()
@@ -27,7 +28,7 @@ public class SlotManager : MonoBehaviour
 
     public void MoveCenterReel(Text text, int diff)
     {
-        text.text = _reelImage[_centerReel[(_centerIndex + diff) % _centerReel.Count]];
+        text.text = _reelImage[_centerReel[(_centerIndex + diff) % _centerReel.Count] - 1];
     }
 
     public void CenterIndexNext()
@@ -38,7 +39,7 @@ public class SlotManager : MonoBehaviour
 
     public void MoveLeftReel(Text text, int diff)
     {
-        text.text = _reelImage[_leftReel[(_leftIndex + diff) % _leftReel.Count]];
+        text.text = _reelImage[_leftReel[(_leftIndex + diff) % _leftReel.Count] - 1];
     }
 
     public void LeftIndexNext()
@@ -57,16 +58,24 @@ public class SlotManager : MonoBehaviour
         {
             case 0:
                 _stopRight = true;
+                r = _rightReel[(_rightIndex + 1) % _rightReel.Count];
                 _rightRB.StopReel(_stopRight);
                 break;
             case 1:
                 _stopCenter = true;
+                c = _centerReel[(_centerIndex + 1) % _centerReel.Count];
                 _centerRB.StopReel(_stopCenter);
                 break;
             case 2:
                 _stopLeft = true;
+                l = _leftReel[(_leftIndex + 1) % _leftReel.Count];
                 _leftRB.StopReel(_stopLeft);
                 break;
+        }
+
+        if (_stopRight && _stopCenter && _stopLeft)
+        {
+            WinOrLose();
         }
     }
 
@@ -84,6 +93,39 @@ public class SlotManager : MonoBehaviour
             _rightRB.MoveReel(_stopRight);
             _centerRB.MoveReel(_stopCenter);
             _leftRB.MoveReel(_stopLeft);
+        }
+    }
+
+    /// <summary>
+    /// 当たりを判定する関数
+    /// </summary>
+    void WinOrLose()
+    {
+        Debug.Log($"{l},{c},{r}");
+
+        if (r * c * l == 7 * 7 * 7)
+        {
+            Debug.Log("ラッキーセブン");
+        }
+        else if (r == c && c == l)
+        {
+            Debug.Log("ぞろ目揃い");
+        }
+        else if (r + c + l == 3 * c)
+        {
+            Debug.Log("連番揃い");
+        }
+        else if (r * c * l % 2 == 1)
+        {
+            Debug.Log("奇数揃い");
+        }
+        else if (r % 2 == 0 && c % 2 == 0 && l % 2 == 0)
+        {
+            Debug.Log("偶数揃い");
+        }
+        else
+        {
+            Debug.Log("ハズレ");
         }
     }
 }
