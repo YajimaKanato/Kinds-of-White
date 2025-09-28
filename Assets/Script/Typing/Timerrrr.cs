@@ -60,6 +60,7 @@ public class Timerrrr : ObjectBase
                             MemoriesManager.TypingHardMemoriesSave(_typingManager.Score);
                             break;
                     }
+                    Medal.SaveMedal(Medal.LoadMedal() + _typingManager.Score / 50);
                 }
             }
         }

@@ -10,6 +10,7 @@ public class SlideManager : MonoBehaviour
     [SerializeField] List<SlideAnswer> _slideAnswerList;
     [SerializeField] Slide[] _slide;
     [SerializeField] Text _text;
+    [SerializeField] int _getMedalAmount = 5000;
     List<Whites> _answerWhiteList = new List<Whites>();
     List<Slide> _selectSlide = new List<Slide>();
     List<int> _selectIndex = new List<int>();
@@ -116,6 +117,7 @@ public class SlideManager : MonoBehaviour
             {
                 GetComponent<Timer>().IsEnd = true;
                 _text.text = "Nice White!!";
+                Medal.SaveMedal(Medal.LoadMedal() + _getMedalAmount);
                 _filter.SetActive(true);
             }
         }

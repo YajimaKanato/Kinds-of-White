@@ -66,6 +66,7 @@ public class ImnotRobotManager : MonoBehaviour
             SEManager.SEPlay("NiceWhite");
             _text.text = "Nice White!!";
             _successCount++;
+            GetMedal();
         }
         else
         {
@@ -82,5 +83,10 @@ public class ImnotRobotManager : MonoBehaviour
     public void SaveCount()
     {
         MemoriesManager.SecurityMemoriesSave(_successCount);
+    }
+
+    void GetMedal()
+    {
+        Medal.SaveMedal(Medal.LoadMedal() + _successCount * 5);
     }
 }

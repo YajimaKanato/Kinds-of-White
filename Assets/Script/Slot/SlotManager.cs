@@ -1,19 +1,37 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SlotManager : MonoBehaviour
 {
     [SerializeField] ReelBase _rightRB, _centerRB, _leftRB;
+    [SerializeField] Text _medalText;
+    [SerializeField] Text _betText;
 
     List<int> _rightReel = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     List<int> _centerReel = new List<int>() { 1, 6, 3, 8, 4, 9, 2, 5, 7 };
     List<int> _leftReel = new List<int>() { 9, 7, 5, 3, 4, 6, 8, 1, 2 };
     List<string> _reelImage = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+    Coroutine _coroutine;
 
     static int _rightIndex = 0, _centerIndex = 0, _leftIndex = 0;
+    static int _bet = 3;
+    int _currentMedal;
     int r, c, l;
-    bool _stopRight, _stopCenter, _stopLeft;
+    bool _stopRight = true, _stopCenter = true, _stopLeft = true;
+    bool _isWinOrLose = true;
+
+    private void Start()
+    {
+        _currentMedal = Medal.LoadMedal();
+        _medalText.text = _currentMedal.ToString("0000");
+        _betText.text = "ìqÇØÇÈñáêî : " + _bet.ToString();
+        _stopRight = true;
+        _stopCenter = true;
+        _stopLeft = true;
+        _isWinOrLose = true;
+    }
 
     public void MoveRightReel(Text text, int diff)
     {
@@ -73,7 +91,7 @@ public class SlotManager : MonoBehaviour
                 break;
         }
 
-        if (_stopRight && _stopCenter && _stopLeft)
+        if (_stopRight && _stopCenter && _stopLeft && !_isWinOrLose)
         {
             WinOrLose();
         }
@@ -90,9 +108,12 @@ public class SlotManager : MonoBehaviour
             _stopRight = false;
             _stopCenter = false;
             _stopLeft = false;
+            _isWinOrLose = false;
             _rightRB.MoveReel(_stopRight);
             _centerRB.MoveReel(_stopCenter);
             _leftRB.MoveReel(_stopLeft);
+            _currentMedal -= _bet;
+            _medalText.text = _currentMedal.ToString("0000");
         }
     }
 
@@ -101,6 +122,7 @@ public class SlotManager : MonoBehaviour
     /// </summary>
     void WinOrLose()
     {
+        _isWinOrLose = true;
         Debug.Log($"{l},{c},{r}");
 
         if (r * c * l == 7 * 7 * 7)
@@ -127,5 +149,55 @@ public class SlotManager : MonoBehaviour
         {
             Debug.Log("ÉnÉYÉå");
         }
+    }
+
+    public void Bet(int bet)
+    {
+        if (_coroutine == null)
+        {
+            _coroutine = StartCoroutine(BetCoroutine(bet));
+        }
+    }
+
+    public void ButtonUp()
+    {
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
+    }
+
+    IEnumerator BetCoroutine(int bet)
+    {
+        _bet += bet;
+        if (_bet <= 0)
+        {
+            _bet = 1;
+        }
+        _betText.text = "ìqÇØÇÈñáêî : " + _bet.ToString();
+        yield return new WaitForSeconds(0.3f);
+        _bet += bet;
+        if (_bet <= 0)
+        {
+            _bet = 1;
+        }
+        _betText.text = "ìqÇØÇÈñáêî : " + _bet.ToString();
+        yield return new WaitForSeconds(0.3f);
+        while (true)
+        {
+            _bet += bet;
+            if (_bet <= 0)
+            {
+                _bet = 1;
+            }
+            _betText.text = "ìqÇØÇÈñáêî : " + _bet.ToString();
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    public void SaveMedal()
+    {
+        Medal.SaveMedal(_currentMedal);
     }
 }
