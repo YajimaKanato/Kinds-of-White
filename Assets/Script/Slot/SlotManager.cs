@@ -8,6 +8,7 @@ public class SlotManager : MonoBehaviour
     [SerializeField] ReelBase _rightRB, _centerRB, _leftRB;
     [SerializeField] Text _medalText;
     [SerializeField] Text _betText;
+    [SerializeField] Image _up, _down;
 
     List<int> _rightReel = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     List<int> _centerReel = new List<int>() { 1, 6, 3, 8, 4, 9, 2, 5, 7 };
@@ -25,8 +26,10 @@ public class SlotManager : MonoBehaviour
     private void Start()
     {
         _currentMedal = Medal.LoadMedal();
-        _medalText.text = _currentMedal.ToString("0000");
-        _betText.text = "“q‚¯‚é–‡” : " + _bet.ToString();
+        _medalText.text = "ŠŽ”\n" + _currentMedal.ToString();
+        _betText.text = "BET\n" + _bet.ToString();
+        _up.color = Color.white;
+        _down.color = Color.clear;
         _stopRight = true;
         _stopCenter = true;
         _stopLeft = true;
@@ -94,6 +97,8 @@ public class SlotManager : MonoBehaviour
         if (_stopRight && _stopCenter && _stopLeft && !_isWinOrLose)
         {
             WinOrLose();
+            _up.color = Color.white;
+            _down.color = Color.clear;
         }
     }
 
@@ -112,8 +117,9 @@ public class SlotManager : MonoBehaviour
             _rightRB.MoveReel(_stopRight);
             _centerRB.MoveReel(_stopCenter);
             _leftRB.MoveReel(_stopLeft);
-            _currentMedal -= _bet;
-            _medalText.text = _currentMedal.ToString("0000");
+            _up.color = Color.clear;
+            _down.color = Color.white;
+            StartCoroutine(MedalCoroutine(_bet, false));
         }
     }
 
@@ -123,18 +129,21 @@ public class SlotManager : MonoBehaviour
     void WinOrLose()
     {
         _isWinOrLose = true;
-        Debug.Log($"{l},{c},{r}");
 
+        var medal = _bet;
         if (r * c * l == 7 * 7 * 7)
         {
+            medal *= 100;
             Debug.Log("ƒ‰ƒbƒL[ƒZƒuƒ“");
         }
         else if (r == c && c == l)
         {
+            medal *= 20;
             Debug.Log("‚¼‚ë–Ú‘µ‚¢");
         }
         else if (r + c + l == 3 * c)
         {
+            medal *= 10;
             Debug.Log("˜A”Ô‘µ‚¢");
         }
         else if (r * c * l % 2 == 1)
@@ -147,8 +156,65 @@ public class SlotManager : MonoBehaviour
         }
         else
         {
+            medal = 0;
             Debug.Log("ƒnƒYƒŒ");
         }
+
+        StartCoroutine(MedalCoroutine(medal, true));
+    }
+
+    IEnumerator MedalCoroutine(int diff, bool upordown)
+    {
+        if (diff != 0)
+        {
+            WaitForSeconds wait;
+            if (diff >= 10)
+            {
+                wait = new WaitForSeconds(0.6f / diff);
+            }
+            else
+            {
+                wait = new WaitForSeconds(0.1f);
+            }
+            if (upordown)
+            {
+                int i = 0;
+                while (true)
+                {
+                    if (i < diff)
+                    {
+                        _currentMedal++;
+                        _medalText.text = "ŠŽ”\n" + _currentMedal.ToString();
+                        yield return wait;
+                    }
+                    else
+                    {
+                        yield break;
+                    }
+                    i++;
+                }
+            }
+            else
+            {
+                int i = 0;
+                while (true)
+                {
+                    if (i < diff)
+                    {
+                        _currentMedal--;
+                        _medalText.text = "ŠŽ”\n" + _currentMedal.ToString();
+                        yield return wait;
+                    }
+                    else
+                    {
+                        yield break;
+                    }
+                    i++;
+                }
+            }
+        }
+
+        yield break;
     }
 
     public void Bet(int bet)
@@ -175,14 +241,14 @@ public class SlotManager : MonoBehaviour
         {
             _bet = 1;
         }
-        _betText.text = "“q‚¯‚é–‡” : " + _bet.ToString();
+        _betText.text = "BET\n" + _bet.ToString();
         yield return new WaitForSeconds(0.3f);
         _bet += bet;
         if (_bet <= 0)
         {
             _bet = 1;
         }
-        _betText.text = "“q‚¯‚é–‡” : " + _bet.ToString();
+        _betText.text = "BET\n" + _bet.ToString();
         yield return new WaitForSeconds(0.3f);
         while (true)
         {
@@ -191,7 +257,7 @@ public class SlotManager : MonoBehaviour
             {
                 _bet = 1;
             }
-            _betText.text = "“q‚¯‚é–‡” : " + _bet.ToString();
+            _betText.text = "BET\n" + _bet.ToString();
             yield return new WaitForSeconds(0.1f);
         }
     }
