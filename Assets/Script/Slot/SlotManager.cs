@@ -136,6 +136,7 @@ public class SlotManager : MonoBehaviour
             _down.color = Color.white;
             SEManager.SEPlay("LeverDown");
             SEManager.SEPlay("InCoin");
+            SEManager.SEPlay("ReelStart");
             StartCoroutine(MedalCoroutine(_bet, false));
         }
     }

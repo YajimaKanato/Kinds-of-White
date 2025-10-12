@@ -1139,7 +1139,7 @@ MonoBehaviour:
   - _actionName: NiceWhite
     _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
   - _actionName: NotWhite
-    _se: {fileID: 8300000, guid: 516a546ff50d64b44978bb5dff3f5f53, type: 3}
+    _se: {fileID: 8300000, guid: 99266247b5a9a064b9b6c5cb2bde259f, type: 3}
   - _actionName: Typing
     _se: {fileID: 8300000, guid: 41dde6c980b47d543a3574db6390d8a4, type: 3}
   - _actionName: StartCount
@@ -1149,15 +1149,17 @@ MonoBehaviour:
   - _actionName: TypingSuccess
     _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
   - _actionName: LeverDown
-    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+    _se: {fileID: 8300000, guid: de7e797150838524c953737625e48d60, type: 3}
   - _actionName: ReelStop
-    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+    _se: {fileID: 8300000, guid: 516a546ff50d64b44978bb5dff3f5f53, type: 3}
   - _actionName: GoodWhite
-    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+    _se: {fileID: 8300000, guid: 1ed56d2b6b3d8d643b20877cdfe0fca1, type: 3}
   - _actionName: InCoin
-    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+    _se: {fileID: 8300000, guid: 6751d88cf8e4eb446988d9939eee33aa, type: 3}
   - _actionName: Bet
-    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+    _se: {fileID: 8300000, guid: 07286ec82294f0e43a52294127255a19, type: 3}
+  - _actionName: ReelStart
+    _se: {fileID: 8300000, guid: 22f1274482ef87642b6143da4de4bbe3, type: 3}
 --- !u!4 &475748508
 Transform:
   m_ObjectHideFlags: 0
