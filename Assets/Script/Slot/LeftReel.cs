@@ -3,22 +3,19 @@ using UnityEngine.UI;
 
 public class LeftReel : ReelBase
 {
-    [SerializeField] Text _text1, _text2, _text3, _text4;
-    [SerializeField] SlotManager _slot;
     Animator _anim;
-
     private void Start()
     {
         _anim = GetComponent<Animator>();
-        ReelUpdate();
+        LeftReelUpdate();
     }
 
-    public override void ReelUpdate()
+    public void LeftReelUpdate()
     {
-        _slot.MoveLeftReel(_text1, 3);
-        _slot.MoveLeftReel(_text2, 2);
-        _slot.MoveLeftReel(_text3, 1);
-        _slot.MoveLeftReel(_text4, 0);
+        _slot.MoveLeftReel(_image1, 3);
+        _slot.MoveLeftReel(_image2, 2);
+        _slot.MoveLeftReel(_image3, 1);
+        _slot.MoveLeftReel(_image4, 0);
         _slot.LeftIndexNext();
     }
 

@@ -23,7 +23,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 300
+        value: 350
         inSlope: -538.14813
         outSlope: -538.14813
         tangentMode: 0
@@ -32,7 +32,7 @@ AnimationClip:
         outWeight: 0.9988277
       - serializedVersion: 3
         time: 0.25
-        value: 120
+        value: 170
         inSlope: -543.72406
         outSlope: -543.72406
         tangentMode: 0
@@ -92,7 +92,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 300
+        value: 350
         inSlope: -538.14813
         outSlope: -538.14813
         tangentMode: 0
@@ -101,7 +101,7 @@ AnimationClip:
         outWeight: 0.9988277
       - serializedVersion: 3
         time: 0.25
-        value: 120
+        value: 170
         inSlope: -543.72406
         outSlope: -543.72406
         tangentMode: 0
@@ -121,7 +121,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.25
-    functionName: ReelUpdate
+    functionName: LeftReelUpdate
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

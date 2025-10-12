@@ -16,8 +16,8 @@ public class GameSelectButton : MonoBehaviour
     static int _nowSelectIndex = 0;
     public static int NowSelectIndex { get { return _nowSelectIndex; } }
     bool _isChanging = false;
-    const float ANIMATIONRANGE = 0.83f;
-    const float EXTRA = 0.15f;
+    const float ANIMATIONRANGE = 0.6f;//0.83
+    const float EXTRA = 0.4f;//0.15
 
     private void Start()
     {
@@ -42,6 +42,11 @@ public class GameSelectButton : MonoBehaviour
             count++;
         }
         _dontToutch.SetActive(false);
+    }
+
+    public void Select(int index)
+    {
+        _nowSelectIndex = index;
     }
 
     public void RightChange()

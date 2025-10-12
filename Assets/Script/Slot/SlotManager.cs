@@ -2,18 +2,20 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using WhitePalette;
 
 public class SlotManager : MonoBehaviour
 {
     [SerializeField] ReelBase _rightRB, _centerRB, _leftRB;
     [SerializeField] Text _medalText;
     [SerializeField] Text _betText;
+    [SerializeField] EventText _eventText;
     [SerializeField] Image _up, _down;
 
-    List<int> _rightReel = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-    List<int> _centerReel = new List<int>() { 1, 6, 3, 8, 4, 9, 2, 5, 7 };
-    List<int> _leftReel = new List<int>() { 9, 7, 5, 3, 4, 6, 8, 1, 2 };
-    List<string> _reelImage = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+    List<int> _rightReel = new List<int>() { 1, 2, 3, 4, 5, 6, 7 };
+    List<int> _centerReel = new List<int>() { 1, 6, 3, 4, 2, 5, 7 };
+    List<int> _leftReel = new List<int>() { 7, 5, 3, 4, 6, 1, 2 };
+    List<Whites> _reelColor = new List<Whites>() { Whites.FFFFFF, Whites.FBFBFB, Whites.F7F7F7, Whites.F3F3F3, Whites.EFEFEF, Whites.EBEBEB, Whites.E7E7E7 };
     Coroutine _coroutine;
 
     static int _rightIndex = 0, _centerIndex = 0, _leftIndex = 0;
@@ -36,9 +38,9 @@ public class SlotManager : MonoBehaviour
         _isWinOrLose = true;
     }
 
-    public void MoveRightReel(Text text, int diff)
+    public void MoveRightReel(Image image, int diff)
     {
-        text.text = _reelImage[_rightReel[(_rightIndex + diff) % _rightReel.Count] - 1];
+        image.color = WhiteManager.White[_reelColor[_rightReel[(_rightIndex + diff) % _rightReel.Count] - 1]];
     }
 
     public void RightIndexNext()
@@ -47,9 +49,9 @@ public class SlotManager : MonoBehaviour
         _rightIndex %= _rightReel.Count;
     }
 
-    public void MoveCenterReel(Text text, int diff)
+    public void MoveCenterReel(Image image, int diff)
     {
-        text.text = _reelImage[_centerReel[(_centerIndex + diff) % _centerReel.Count] - 1];
+        image.color = WhiteManager.White[_reelColor[_centerReel[(_centerIndex + diff) % _centerReel.Count] - 1]];
     }
 
     public void CenterIndexNext()
@@ -58,9 +60,9 @@ public class SlotManager : MonoBehaviour
         _centerIndex %= _centerReel.Count;
     }
 
-    public void MoveLeftReel(Text text, int diff)
+    public void MoveLeftReel(Image image, int diff)
     {
-        text.text = _reelImage[_leftReel[(_leftIndex + diff) % _leftReel.Count] - 1];
+        image.color = WhiteManager.White[_reelColor[_leftReel[(_leftIndex + diff) % _leftReel.Count] - 1]];
     }
 
     public void LeftIndexNext()
@@ -131,34 +133,25 @@ public class SlotManager : MonoBehaviour
         _isWinOrLose = true;
 
         var medal = _bet;
-        if (r * c * l == 7 * 7 * 7)
+        if (r == c && c == l)
         {
-            medal *= 100;
-            Debug.Log("ラッキーセブン");
+            medal *= 50;
+            _eventText.ThreeMatch();
+            Debug.Log("３色揃い");
         }
-        else if (r == c && c == l)
+        else if (r == c || c == l || l == r)
         {
-            medal *= 20;
-            Debug.Log("ぞろ目揃い");
-        }
-        else if (r + c + l == 3 * c)
-        {
-            medal *= 10;
-            Debug.Log("連番揃い");
-        }
-        else if (r * c * l % 2 == 1)
-        {
-            Debug.Log("奇数揃い");
-        }
-        else if (r % 2 == 0 && c % 2 == 0 && l % 2 == 0)
-        {
-            Debug.Log("偶数揃い");
+            medal *= 3;
+            _eventText.TwoMatch();
+            Debug.Log("２色揃い");
         }
         else
         {
             medal = 0;
+            _eventText.NoMatch();
             Debug.Log("ハズレ");
         }
+        Debug.Log($"{l},{c},{r}");
 
         StartCoroutine(MedalCoroutine(medal, true));
     }

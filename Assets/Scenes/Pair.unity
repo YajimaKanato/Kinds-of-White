@@ -1078,6 +1078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clearText: {fileID: 1520763395}
   _enterObj: {fileID: 606911603}
+  _getMedalAmount: 100
 --- !u!4 &414355600
 Transform:
   m_ObjectHideFlags: 0
@@ -2150,7 +2151,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 898544260}
-  - component: {fileID: 898544261}
   m_Layer: 0
   m_Name: InfoGroup
   m_TagString: Untagged
@@ -2172,23 +2172,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1252037063}
-  - {fileID: 1123313994}
-  - {fileID: 1468167731}
-  - {fileID: 1033446822}
+  - {fileID: 991038279}
   m_Father: {fileID: 933978651}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &898544261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898544259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da227b6a3e1cbd3488c988e159fb1ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &933978647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,6 +2390,54 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4959151234744489094, guid: 3ded79a0a44522640b0565ccd748fd9f, type: 3}
   m_PrefabInstance: {fileID: 983050558}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &991038278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 991038279}
+  - component: {fileID: 991038280}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &991038279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991038278}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1123313994}
+  - {fileID: 1468167731}
+  - {fileID: 1033446822}
+  m_Father: {fileID: 898544260}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &991038280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991038278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da227b6a3e1cbd3488c988e159fb1ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _back: {fileID: 898544259}
 --- !u!1 &1033446821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,7 +2470,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 177122283}
-  m_Father: {fileID: 898544260}
+  m_Father: {fileID: 991038279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2487,7 +2521,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 898544261}
+      - m_Target: {fileID: 991038280}
         m_TargetAssemblyTypeName: Info, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
@@ -2991,7 +3025,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 898544260}
+  m_Father: {fileID: 991038279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3773,7 +3807,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 898544260}
+  m_Father: {fileID: 991038279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5032,7 +5066,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -5040,6 +5073,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1001 &2026145384
 PrefabInstance:
   m_ObjectHideFlags: 0

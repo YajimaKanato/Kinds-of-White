@@ -3,22 +3,19 @@ using UnityEngine.UI;
 
 public class CenterReel : ReelBase
 {
-    [SerializeField] Text _text1, _text2, _text3, _text4;
-    [SerializeField] SlotManager _slot;
     Animator _anim;
-
     private void Start()
     {
         _anim = GetComponent<Animator>();
-        ReelUpdate();
+        CenterReelUpdate();
     }
 
-    public override void ReelUpdate()
+    public void CenterReelUpdate()
     {
-        _slot.MoveCenterReel(_text1, 3);
-        _slot.MoveCenterReel(_text2, 2);
-        _slot.MoveCenterReel(_text3, 1);
-        _slot.MoveCenterReel(_text4, 0);
+        _slot.MoveCenterReel(_image1, 3);
+        _slot.MoveCenterReel(_image2, 2);
+        _slot.MoveCenterReel(_image3, 1);
+        _slot.MoveCenterReel(_image4, 0);
         _slot.CenterIndexNext();
     }
 

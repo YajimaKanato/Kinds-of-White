@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Info : MonoBehaviour
 {
+    [SerializeField] GameObject _back;
     Coroutine _openCoroutine;
     Coroutine _closeCoroutine;
     Timer _timer;
@@ -18,7 +19,7 @@ public class Info : MonoBehaviour
     {
         _timer = FindFirstObjectByType<Timer>();
         _defaultScale = transform.localScale;
-        gameObject.SetActive(false);
+        _back.SetActive(false);
     }
 
     private void OnEnable()
@@ -81,7 +82,7 @@ public class Info : MonoBehaviour
             if (delta > SCALETIME)
             {
                 transform.localScale = _defaultScale * _minScale;
-                gameObject.SetActive(false);
+                _back.SetActive(false);
                 if(_timer != null)
                 {
                     _timer.IsEnd = false;
