@@ -30,4 +30,10 @@ public class CenterReel : ReelBase
         _anim.speed = 0.8f;
         _anim.SetBool("Stop", stop);
     }
+
+    public void SetCenterFlag()
+    {
+        _slot.SetCenterFlag();
+        _slot.WinOrLose();
+    }
 }

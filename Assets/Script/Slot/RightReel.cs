@@ -31,4 +31,9 @@ public class RightReel : ReelBase
         _anim.SetBool("Stop", stop);
     }
 
+    public void SetRightFlag()
+    {
+        _slot.SetRightFlag();
+        _slot.WinOrLose();
+    }
 }

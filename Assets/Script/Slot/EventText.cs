@@ -9,9 +9,9 @@ public class EventText : MonoBehaviour
     Animator _anim;
     List<string> _textList = new List<string>() { "シロット", "ワクワク", "当たるかな？", "見極めろ！" };
     const string _baseText = "　　　　　　　　　　　　";
-    const string TWOMATCH = "　　　Good White！！　　　";
-    const string THREEMATCH = "　　　Nice White！！　　　";
-    const string NOMATCH = "　　　Bad White,,,　　　";
+    const string TWOMATCH = "　 　 　Good White！！　　　";
+    const string THREEMATCH = "　  　　Nice White！！　　　";
+    const string NOMATCH = " 　　　　Bad White,,,　　　";
     string _outText;
     int _length;
     int rand;
@@ -36,6 +36,7 @@ public class EventText : MonoBehaviour
 
     public void NewTextSet()
     {
+        _length = 0;
         rand = Random.Range(0, _textList.Count);
         _outText = _baseText + _textList[rand];
         _text.text = _outText;
@@ -44,18 +45,21 @@ public class EventText : MonoBehaviour
     public void ThreeMatch()
     {
         _anim.SetTrigger("Hit");
+        SEManager.SEPlay("NiceWhite");
         _text.text = THREEMATCH;
     }
 
     public void TwoMatch()
     {
         _anim.SetTrigger("Hit");
+        SEManager.SEPlay("GoodWhite");
         _text.text = TWOMATCH;
     }
 
     public void NoMatch()
     {
         _anim.SetTrigger("Hit");
+        SEManager.SEPlay("NotWhite");
         _text.text = NOMATCH;
     }
 }

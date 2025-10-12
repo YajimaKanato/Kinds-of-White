@@ -7,6 +7,7 @@ using WhitePalette;
 public class SlotManager : MonoBehaviour
 {
     [SerializeField] ReelBase _rightRB, _centerRB, _leftRB;
+    [SerializeField] GameObject _rightCover, _centerCover, _leftCover;
     [SerializeField] Text _medalText;
     [SerializeField] Text _betText;
     [SerializeField] EventText _eventText;
@@ -77,31 +78,40 @@ public class SlotManager : MonoBehaviour
     /// <param name="num">停止させるリールの番号（左から0,1,2）</param>
     public void StopReel(int num)
     {
+        SEManager.SEPlay("ReelStop");
         switch (num)
         {
             case 0:
-                _stopRight = true;
+                _rightCover.SetActive(true);
                 r = _rightReel[(_rightIndex + 1) % _rightReel.Count];
-                _rightRB.StopReel(_stopRight);
+                _rightRB.StopReel(true);
                 break;
             case 1:
-                _stopCenter = true;
+                _centerCover.SetActive(true);
                 c = _centerReel[(_centerIndex + 1) % _centerReel.Count];
-                _centerRB.StopReel(_stopCenter);
+                _centerRB.StopReel(true);
                 break;
             case 2:
-                _stopLeft = true;
+                _leftCover.SetActive(true);
                 l = _leftReel[(_leftIndex + 1) % _leftReel.Count];
-                _leftRB.StopReel(_stopLeft);
+                _leftRB.StopReel(true);
                 break;
         }
+    }
 
-        if (_stopRight && _stopCenter && _stopLeft && !_isWinOrLose)
-        {
-            WinOrLose();
-            _up.color = Color.white;
-            _down.color = Color.clear;
-        }
+    public void SetRightFlag()
+    {
+        _stopRight = true;
+    }
+
+    public void SetCenterFlag()
+    {
+        _stopCenter = true;
+    }
+
+    public void SetLeftFlag()
+    {
+        _stopLeft = true;
     }
 
     /// <summary>
@@ -115,12 +125,17 @@ public class SlotManager : MonoBehaviour
             _stopRight = false;
             _stopCenter = false;
             _stopLeft = false;
+            _rightCover.SetActive(false);
+            _centerCover.SetActive(false);
+            _leftCover.SetActive(false);
             _isWinOrLose = false;
             _rightRB.MoveReel(_stopRight);
             _centerRB.MoveReel(_stopCenter);
             _leftRB.MoveReel(_stopLeft);
             _up.color = Color.clear;
             _down.color = Color.white;
+            SEManager.SEPlay("LeverDown");
+            SEManager.SEPlay("InCoin");
             StartCoroutine(MedalCoroutine(_bet, false));
         }
     }
@@ -128,32 +143,38 @@ public class SlotManager : MonoBehaviour
     /// <summary>
     /// 当たりを判定する関数
     /// </summary>
-    void WinOrLose()
+    public void WinOrLose()
     {
-        _isWinOrLose = true;
+        if (_stopRight && _stopCenter && _stopLeft && !_isWinOrLose)
+        {
 
-        var medal = _bet;
-        if (r == c && c == l)
-        {
-            medal *= 50;
-            _eventText.ThreeMatch();
-            Debug.Log("３色揃い");
-        }
-        else if (r == c || c == l || l == r)
-        {
-            medal *= 3;
-            _eventText.TwoMatch();
-            Debug.Log("２色揃い");
-        }
-        else
-        {
-            medal = 0;
-            _eventText.NoMatch();
-            Debug.Log("ハズレ");
-        }
-        Debug.Log($"{l},{c},{r}");
+            _isWinOrLose = true;
+            _up.color = Color.white;
+            _down.color = Color.clear;
 
-        StartCoroutine(MedalCoroutine(medal, true));
+            var medal = _bet;
+            if (r == c && c == l)
+            {
+                medal *= 50;
+                _eventText.ThreeMatch();
+                Debug.Log("３色揃い");
+            }
+            else if (r == c || c == l || l == r)
+            {
+                medal *= 3;
+                _eventText.TwoMatch();
+                Debug.Log("２色揃い");
+            }
+            else
+            {
+                medal = 0;
+                _eventText.NoMatch();
+                Debug.Log("ハズレ");
+            }
+            Debug.Log($"{l},{c},{r}");
+
+            StartCoroutine(MedalCoroutine(medal, true));
+        }
     }
 
     IEnumerator MedalCoroutine(int diff, bool upordown)
@@ -235,6 +256,7 @@ public class SlotManager : MonoBehaviour
             _bet = 1;
         }
         _betText.text = "BET\n" + _bet.ToString();
+        SEManager.SEPlay("Bet");
         yield return new WaitForSeconds(0.3f);
         _bet += bet;
         if (_bet <= 0)
@@ -242,6 +264,7 @@ public class SlotManager : MonoBehaviour
             _bet = 1;
         }
         _betText.text = "BET\n" + _bet.ToString();
+        SEManager.SEPlay("Bet");
         yield return new WaitForSeconds(0.3f);
         while (true)
         {
@@ -251,6 +274,7 @@ public class SlotManager : MonoBehaviour
                 _bet = 1;
             }
             _betText.text = "BET\n" + _bet.ToString();
+            SEManager.SEPlay("Bet");
             yield return new WaitForSeconds(0.1f);
         }
     }

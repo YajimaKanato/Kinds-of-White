@@ -495,7 +495,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 272923216}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: SceneTransition
+        m_MethodName: Retry
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -795,7 +795,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 450820153}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: SceneTransition
+        m_MethodName: GoGame
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1147,6 +1147,16 @@ MonoBehaviour:
   - _actionName: Start
     _se: {fileID: 8300000, guid: 674a073e59a21594abace2a6c1056029, type: 3}
   - _actionName: TypingSuccess
+    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+  - _actionName: LeverDown
+    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+  - _actionName: ReelStop
+    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+  - _actionName: GoodWhite
+    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+  - _actionName: InCoin
+    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+  - _actionName: Bet
     _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
 --- !u!4 &475748508
 Transform:
@@ -1924,6 +1934,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 987870380}
+        m_TargetAssemblyTypeName: SelectList, Assembly-CSharp
+        m_MethodName: SEPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &987870378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2176,9 +2198,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1061131533}
+      - m_Target: {fileID: 450820153}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: SceneTransition
+        m_MethodName: GoGame
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2669,9 +2691,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1320631876}
+      - m_Target: {fileID: 450820153}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: SceneTransition
+        m_MethodName: GoGame
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3131,9 +3153,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1515143106}
+      - m_Target: {fileID: 450820153}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: SceneTransition
+        m_MethodName: GoGame
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4005,9 +4027,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2074380912}
+      - m_Target: {fileID: 450820153}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: SceneTransition
+        m_MethodName: GoGame
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

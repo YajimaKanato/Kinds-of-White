@@ -30,4 +30,10 @@ public class LeftReel : ReelBase
         _anim.speed = 0.8f;
         _anim.SetBool("Stop", stop);
     }
+
+    public void SetLeftFlag()
+    {
+        _slot.SetLeftFlag();
+        _slot.WinOrLose();
+    }
 }
