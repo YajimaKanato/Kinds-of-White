@@ -2,15 +2,24 @@ using UnityEngine;
 
 public class BGMSelecter : MonoBehaviour
 {
+    [SerializeField] GameObject _obj;
+    bool _isActive;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _isActive = true;
+        Active();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Active()
     {
-        
+        _isActive = !_isActive;
+        _obj.SetActive(_isActive);
+    }
+
+    public void SEPlay()
+    {
+        SEManager.SEPlay(_isActive ? "NormalButton" : "BackButton");
     }
 }

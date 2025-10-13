@@ -20,6 +20,6 @@ public class SelectList : MonoBehaviour
 
     public void SEPlay()
     {
-        SEManager.SEPlay("NormalButton");
+        SEManager.SEPlay(_isActive ? "NormalButton" : "BackButton");
     }
 }
