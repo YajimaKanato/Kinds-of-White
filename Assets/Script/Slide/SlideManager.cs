@@ -10,6 +10,7 @@ public class SlideManager : MonoBehaviour
     [SerializeField] List<SlideAnswer> _slideAnswerList;
     [SerializeField] Slide[] _slide;
     [SerializeField] Text _text;
+    [SerializeField] Text _matchText;
     [SerializeField] MedalText _medalText;
     [SerializeField] int _getMedalAmount = 5000;
     List<Whites> _answerWhiteList = new List<Whites>();
@@ -17,6 +18,7 @@ public class SlideManager : MonoBehaviour
     List<int> _selectIndex = new List<int>();
 
     int _slideCount;
+    int _matchCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +26,17 @@ public class SlideManager : MonoBehaviour
         _filter.SetActive(false);
         _text.text = "";
         SlideSetting();
+        _matchCount = 0;
+        for (int i = 0; i < _slideCount; i++)
+        {
+            Debug.Log($"{_slide[i].Whites.ToString()} : {_answerWhiteList[i].ToString()}");
+            if (_slide[i].Whites == _answerWhiteList[i])
+            {
+                _matchCount++;
+            }
+        }
+
+        _matchText.text = "‡‚Á‚Ä‚¢‚é”\n" + _matchCount;
     }
 
     void SlideSetting()
@@ -98,15 +111,21 @@ public class SlideManager : MonoBehaviour
             }
 
             bool isAllMatch = true;
+            _matchCount = 0;
             for (int i = 0; i < _slideCount; i++)
             {
                 Debug.Log($"{_slide[i].Whites.ToString()} : {_answerWhiteList[i].ToString()}");
                 if (_slide[i].Whites != _answerWhiteList[i])
                 {
                     isAllMatch = false;
-                    break;
+                }
+                else
+                {
+                    _matchCount++;
                 }
             }
+
+            _matchText.text = "‡‚Á‚Ä‚¢‚é”\n" + _matchCount;
 
             if (isAllMatch)
             {
