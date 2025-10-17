@@ -4562,7 +4562,7 @@ MonoBehaviour:
   _text: {fileID: 1809734621}
   _matchText: {fileID: 748366940}
   _medalText: {fileID: 2105107305}
-  _getMedalAmount: 5000
+  _getMedalAmount: 2500
 --- !u!4 &1125724983
 Transform:
   m_ObjectHideFlags: 0
