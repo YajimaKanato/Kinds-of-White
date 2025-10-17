@@ -6,7 +6,7 @@ public class Select : MonoBehaviour
 {
     [SerializeField] List<GameObject> _list;
     [SerializeField] Text _text;
-    static int _index = 0;
+    int _index = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

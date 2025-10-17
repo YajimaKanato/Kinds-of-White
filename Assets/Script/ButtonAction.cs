@@ -54,7 +54,7 @@ public class ButtonAction : MonoBehaviour
     
     IEnumerator WaitCoroutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
         SceneTransition("Security");
         yield break;
     } 

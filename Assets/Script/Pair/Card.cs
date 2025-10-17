@@ -24,7 +24,7 @@ public class Card : MonoBehaviour
     int _num;
     public int Num { get { return _num; } set { _num = value; } }
 
-    const int TURNFRAME = 30;
+    const int TURNFRAME = 20;
     private void Start()
     {
         if (this.tag != "Card")

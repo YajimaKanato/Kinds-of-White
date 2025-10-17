@@ -8,6 +8,7 @@ public class ImnotRobotManager : MonoBehaviour
     [SerializeField] GameObject _image;
     [SerializeField] Text _text;
     [SerializeField] Text _successText;
+    [SerializeField] MedalText _medalText;
 
     List<WhiteSquare> _selectList;
 
@@ -87,6 +88,7 @@ public class ImnotRobotManager : MonoBehaviour
 
     void GetMedal()
     {
+        _medalText.MedalUp(_successCount * 5);
         Medal.SaveMedal(Medal.LoadMedal() + _successCount * 5);
     }
 }

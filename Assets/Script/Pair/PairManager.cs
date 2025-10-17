@@ -9,6 +9,7 @@ public class PairManager : MonoBehaviour
 {
     [SerializeField] Text _clearText;
     [SerializeField] GameObject _enterObj;
+    [SerializeField] MedalText _medalText;
     [SerializeField] int _getMedalAmount = 100;
 
     Card[] _cards;
@@ -97,6 +98,7 @@ public class PairManager : MonoBehaviour
             GetComponent<Timer>().IsEnd = true;
             SEManager.SEPlay("NiceWhite");
             _clearText.text = "Nice White!!";
+            _medalText.MedalUp(_getMedalAmount);
             Medal.SaveMedal(Medal.LoadMedal() + _getMedalAmount);
         }
     }

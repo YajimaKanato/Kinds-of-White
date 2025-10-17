@@ -1,4 +1,3 @@
-using System.Security;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,7 @@ public class Timerrrr : ObjectBase
     [SerializeField] Text _nice;
     [SerializeField] GameObject _button;
     [SerializeField] TypingManager _typingManager;
+    [SerializeField] MedalText _medalText;
 
     Text _text;
 
@@ -60,7 +60,8 @@ public class Timerrrr : ObjectBase
                             MemoriesManager.TypingHardMemoriesSave(_typingManager.Score);
                             break;
                     }
-                    Medal.SaveMedal(Medal.LoadMedal() + _typingManager.Score / 50);
+                    _medalText.MedalUp(_typingManager.Score / 100);
+                    Medal.SaveMedal(Medal.LoadMedal() + _typingManager.Score / 100);
                 }
             }
         }

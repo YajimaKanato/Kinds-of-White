@@ -10,6 +10,7 @@ public class SlideManager : MonoBehaviour
     [SerializeField] List<SlideAnswer> _slideAnswerList;
     [SerializeField] Slide[] _slide;
     [SerializeField] Text _text;
+    [SerializeField] MedalText _medalText;
     [SerializeField] int _getMedalAmount = 5000;
     List<Whites> _answerWhiteList = new List<Whites>();
     List<Slide> _selectSlide = new List<Slide>();
@@ -23,12 +24,6 @@ public class SlideManager : MonoBehaviour
         _filter.SetActive(false);
         _text.text = "";
         SlideSetting();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void SlideSetting()
@@ -117,6 +112,7 @@ public class SlideManager : MonoBehaviour
             {
                 GetComponent<Timer>().IsEnd = true;
                 _text.text = "Nice White!!";
+                _medalText.MedalUp(_getMedalAmount);
                 Medal.SaveMedal(Medal.LoadMedal() + _getMedalAmount);
                 _filter.SetActive(true);
             }

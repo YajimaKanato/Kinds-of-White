@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Data.Common;
 using UnityEngine;
 
 public class Info : MonoBehaviour
@@ -24,7 +25,7 @@ public class Info : MonoBehaviour
 
     private void OnEnable()
     {
-        if( _timer != null)
+        if (_timer != null)
         {
             _timer.IsEnd = true;
         }
@@ -41,17 +42,20 @@ public class Info : MonoBehaviour
             StopCoroutine(_openCoroutine);
             _openCoroutine = null;
         }
-    }
 
-    public void Close()
-    {
         if (_closeCoroutine != null)
         {
             StopCoroutine(_closeCoroutine);
             _closeCoroutine = null;
         }
-        SEManager.SEPlay("BackButton");
-        _closeCoroutine = StartCoroutine(CloseCoroutine());
+    }
+
+    public void Close()
+    {
+        if (_closeCoroutine == null)
+        {
+            _closeCoroutine = StartCoroutine(CloseCoroutine());
+        }
     }
 
     IEnumerator OpenCoroutine()
@@ -73,6 +77,7 @@ public class Info : MonoBehaviour
 
     IEnumerator CloseCoroutine()
     {
+        SEManager.SEPlay("BackButton");
         float delta = 0;
         float scaleDelta = _minScale - _maxScale;
         while (true)
@@ -83,7 +88,7 @@ public class Info : MonoBehaviour
             {
                 transform.localScale = _defaultScale * _minScale;
                 _back.SetActive(false);
-                if(_timer != null)
+                if (_timer != null)
                 {
                     _timer.IsEnd = false;
                 }

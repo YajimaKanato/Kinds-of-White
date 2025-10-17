@@ -29,7 +29,7 @@ public class SlotManager : MonoBehaviour
     private void Start()
     {
         _currentMedal = Medal.LoadMedal();
-        _medalText.text = "ŠŽ”\n" + _currentMedal.ToString();
+        _medalText.text = _currentMedal.ToString();
         _betText.text = "BET\n" + _bet.ToString();
         _up.color = Color.white;
         _down.color = Color.clear;
@@ -120,7 +120,7 @@ public class SlotManager : MonoBehaviour
     public void StartReel()
     {
         //‚·‚×‚Ä‚ÌƒŠ[ƒ‹‚ªŽ~‚Ü‚Á‚Ä‚é‚Æ‚«‚ÉƒŠ[ƒ‹‰ñ“]ŠJŽn
-        if (_stopRight && _stopCenter && _stopLeft)
+        if (_stopRight && _stopCenter && _stopLeft && _currentMedal > 0)
         {
             _stopRight = false;
             _stopCenter = false;
@@ -199,7 +199,7 @@ public class SlotManager : MonoBehaviour
                     if (i < diff)
                     {
                         _currentMedal++;
-                        _medalText.text = "ŠŽ”\n" + _currentMedal.ToString();
+                        _medalText.text = _currentMedal.ToString();
                         yield return wait;
                     }
                     else
@@ -217,7 +217,7 @@ public class SlotManager : MonoBehaviour
                     if (i < diff)
                     {
                         _currentMedal--;
-                        _medalText.text = "ŠŽ”\n" + _currentMedal.ToString();
+                        _medalText.text = _currentMedal.ToString();
                         yield return wait;
                     }
                     else
@@ -256,6 +256,10 @@ public class SlotManager : MonoBehaviour
         {
             _bet = 1;
         }
+        if (_bet >= _currentMedal)
+        {
+            _bet = _currentMedal;
+        }
         _betText.text = "BET\n" + _bet.ToString();
         SEManager.SEPlay("Bet");
         yield return new WaitForSeconds(0.3f);
@@ -263,6 +267,10 @@ public class SlotManager : MonoBehaviour
         if (_bet <= 0)
         {
             _bet = 1;
+        }
+        if (_bet >= _currentMedal)
+        {
+            _bet = _currentMedal;
         }
         _betText.text = "BET\n" + _bet.ToString();
         SEManager.SEPlay("Bet");
@@ -274,9 +282,13 @@ public class SlotManager : MonoBehaviour
             {
                 _bet = 1;
             }
+            if (_bet >= _currentMedal)
+            {
+                _bet = _currentMedal;
+            }
             _betText.text = "BET\n" + _bet.ToString();
             SEManager.SEPlay("Bet");
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 

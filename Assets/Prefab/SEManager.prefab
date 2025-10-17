@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4749905292372361479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2593952660885059135}
+  - component: {fileID: 4441879194634306909}
+  m_Layer: 0
+  m_Name: SEManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2593952660885059135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749905292372361479}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4441879194634306909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749905292372361479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5f14d804ffb134fbe62fee3d432824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mixer: {fileID: 24100000, guid: 08a0ccc28c8782f41ba669f37ccd1c89, type: 2}
+  _mixerGroup: {fileID: 58425846566459918, guid: 08a0ccc28c8782f41ba669f37ccd1c89, type: 2}
+  _seData:
+  - _actionName: NormalButton
+    _se: {fileID: 8300000, guid: cf27f218cc5154c40ab3d011bf7b111d, type: 3}
+  - _actionName: SelectButton
+    _se: {fileID: 8300000, guid: d6fe8eda54714c54493d8bb43b99513b, type: 3}
+  - _actionName: GoGame
+    _se: {fileID: 8300000, guid: cb42a331473168844b51039f65743370, type: 3}
+  - _actionName: BackButton
+    _se: {fileID: 8300000, guid: 226eb696954783244a09f39cafe3d5bb, type: 3}
+  - _actionName: WhiteSelect
+    _se: {fileID: 8300000, guid: 267151a276e96384b9679ae7ced91786, type: 3}
+  - _actionName: CardSelect
+    _se: {fileID: 8300000, guid: 67d40bf6a7de414468e5fdfa9b3819ac, type: 3}
+  - _actionName: MakePair
+    _se: {fileID: 8300000, guid: ca443fd7b9c40844ab2fb1def6428e10, type: 3}
+  - _actionName: Slide
+    _se: {fileID: 8300000, guid: 4de4aab014f66824fb1e5f00466484cc, type: 3}
+  - _actionName: NiceWhite
+    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+  - _actionName: NotWhite
+    _se: {fileID: 8300000, guid: 99266247b5a9a064b9b6c5cb2bde259f, type: 3}
+  - _actionName: Typing
+    _se: {fileID: 8300000, guid: 41dde6c980b47d543a3574db6390d8a4, type: 3}
+  - _actionName: StartCount
+    _se: {fileID: 8300000, guid: 3ff6b7d2f394d304f8a1486546022a2b, type: 3}
+  - _actionName: Start
+    _se: {fileID: 8300000, guid: 674a073e59a21594abace2a6c1056029, type: 3}
+  - _actionName: TypingSuccess
+    _se: {fileID: 8300000, guid: d931460433faa6e429267d026c4a3025, type: 3}
+  - _actionName: LeverDown
+    _se: {fileID: 8300000, guid: de7e797150838524c953737625e48d60, type: 3}
+  - _actionName: ReelStop
+    _se: {fileID: 8300000, guid: 516a546ff50d64b44978bb5dff3f5f53, type: 3}
+  - _actionName: GoodWhite
+    _se: {fileID: 8300000, guid: 1ed56d2b6b3d8d643b20877cdfe0fca1, type: 3}
+  - _actionName: InCoin
+    _se: {fileID: 8300000, guid: 6751d88cf8e4eb446988d9939eee33aa, type: 3}
+  - _actionName: Bet
+    _se: {fileID: 8300000, guid: 07286ec82294f0e43a52294127255a19, type: 3}
+  - _actionName: ReelStart
+    _se: {fileID: 8300000, guid: 22f1274482ef87642b6143da4de4bbe3, type: 3}
