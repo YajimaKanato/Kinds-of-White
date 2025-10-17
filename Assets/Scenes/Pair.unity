@@ -1820,7 +1820,7 @@ MonoBehaviour:
   _clearText: {fileID: 1520763395}
   _enterObj: {fileID: 606911603}
   _medalText: {fileID: 2138124936}
-  _getMedalAmount: 500
+  _getMedalAmount: 250
 --- !u!4 &414355600
 Transform:
   m_ObjectHideFlags: 0
@@ -3102,7 +3102,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uFF5E\u30AF\u30EA\u30A2\u5831\u916C\uFF5E\n\u30E1\u30C0\u30EB500\u679A"
+  m_Text: "\uFF5E\u30AF\u30EA\u30A2\u5831\u916C\uFF5E\n\u30E1\u30C0\u30EB250\u679A"
 --- !u!222 &739499619
 CanvasRenderer:
   m_ObjectHideFlags: 0

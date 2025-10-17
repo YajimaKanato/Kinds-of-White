@@ -2230,7 +2230,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uFF5E\u30AF\u30EA\u30A2\u5831\u916C\uFF5E\n\u30E1\u30C0\u30EB2500\u679A"
+  m_Text: "\uFF5E\u30AF\u30EA\u30A2\u5831\u916C\uFF5E\n\u30E1\u30C0\u30EB150\u679A"
 --- !u!222 &437775513
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4562,7 +4562,7 @@ MonoBehaviour:
   _text: {fileID: 1809734621}
   _matchText: {fileID: 748366940}
   _medalText: {fileID: 2105107305}
-  _getMedalAmount: 2500
+  _getMedalAmount: 150
 --- !u!4 &1125724983
 Transform:
   m_ObjectHideFlags: 0

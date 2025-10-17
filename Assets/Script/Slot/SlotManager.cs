@@ -137,6 +137,11 @@ public class SlotManager : MonoBehaviour
             SEManager.SEPlay("LeverDown");
             SEManager.SEPlay("InCoin");
             SEManager.SEPlay("ReelStart");
+            if (_currentMedal <= _bet)
+            {
+                _bet = _currentMedal;
+                _betText.text = "BET\n" + _bet.ToString();
+            }
             StartCoroutine(MedalCoroutine(_bet, false));
         }
     }
