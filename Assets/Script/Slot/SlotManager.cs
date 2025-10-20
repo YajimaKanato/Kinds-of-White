@@ -188,9 +188,11 @@ public class SlotManager : MonoBehaviour
         if (diff != 0)
         {
             WaitForSeconds wait;
+            int waitWidth = 1;
             if (diff >= 10)
             {
                 wait = new WaitForSeconds(0.6f / diff);
+                if (Time.deltaTime > (0.6f / diff)) waitWidth = (int)(Time.deltaTime / (0.6f / diff));
             }
             else
             {
@@ -205,7 +207,7 @@ public class SlotManager : MonoBehaviour
                     {
                         _currentMedal++;
                         _medalText.text = _currentMedal.ToString();
-                        yield return wait;
+                        if (i % waitWidth == 0) yield return wait;
                     }
                     else
                     {
@@ -223,7 +225,7 @@ public class SlotManager : MonoBehaviour
                     {
                         _currentMedal--;
                         _medalText.text = _currentMedal.ToString();
-                        yield return wait;
+                        if (i % waitWidth == 0) yield return wait;
                     }
                     else
                     {
