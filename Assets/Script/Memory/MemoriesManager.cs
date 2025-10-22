@@ -41,7 +41,7 @@ public static class MemoriesManager
     {
         var s = Array.ConvertAll(time.Split(':'), int.Parse);
         _pairList.Add((s[0], s[1], s[2]));
-        var mem = _pairList.OrderBy(n => n.hour).ThenBy(n => n.minute).ThenBy(n => n.second).Select(n => $"{n.hour}:{n.minute}:{n.second}").ToList();
+        var mem = _pairList.OrderBy(n => n.hour).ThenBy(n => n.minute).ThenBy(n => n.second).Select(n => $"{n.hour:00}:{n.minute:00}:{n.second:00}").ToList();
         if (mem.Count > 5)
         {
             mem.RemoveAt(mem.Count - 1);
@@ -68,7 +68,7 @@ public static class MemoriesManager
     {
         var s = Array.ConvertAll(time.Split(':'), int.Parse);
         _slideList.Add((s[0], s[1], s[2]));
-        var mem = _slideList.OrderBy(n => n.hour).ThenBy(n => n.minute).ThenBy(n => n.second).Select(n => $"{n.hour}:{n.minute}:{n.second}").ToList();
+        var mem = _slideList.OrderBy(n => n.hour).ThenBy(n => n.minute).ThenBy(n => n.second).Select(n => $"{n.hour:00}:{n.minute:00}:{n.second:00}").ToList();
         if (mem.Count > 5)
         {
             mem.RemoveAt(mem.Count - 1);
@@ -108,7 +108,10 @@ public static class MemoriesManager
     public static void TypingNormalMemoriesSave(int score)
     {
         _typingListNormal.Add(score);
-        var mem = _typingListNormal.OrderByDescending(n => n).ToList();
+        var mem = _typingListNormal
+            .OrderByDescending(n => n)
+            .Select(x => { if (x > 10000) x = 9999; return x; })
+            .ToList();
         for (int i = 5; i < mem.Count; i++)
         {
             mem.RemoveAt(mem.Count - 1);
@@ -122,7 +125,10 @@ public static class MemoriesManager
     public static void TypingHardMemoriesSave(int score)
     {
         _typingListHard.Add(score);
-        var mem = _typingListHard.OrderByDescending(n => n).ToList();
+        var mem = _typingListNormal
+            .OrderByDescending(n => n)
+            .Select(x => { if (x > 10000) x = 9999; return x; })
+            .ToList();
         for (int i = 5; i < mem.Count; i++)
         {
             mem.RemoveAt(mem.Count - 1);
